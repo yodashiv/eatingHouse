@@ -1,10 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
 import React from "react";
+import { stateInterface } from "./store";
 
-const updateLocationF = (state, action) => (
+const updateLocationF = (state: stateInterface, action) => (
     {
         ...state,
-        loading: action.payload.location,
+        location: action.payload.location,
     }
 );
 
