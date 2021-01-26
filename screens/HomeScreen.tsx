@@ -4,9 +4,11 @@ import { StyleSheet } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import RestaurantSearch from "../components/RestaurantSearch";
-
+import { GOOGLE_PLACES_KEY } from "@env";
 
 export default function HomeScreen() {
+  console.log("The key is" + GOOGLE_PLACES_KEY);
+
   return (
     // <View style={styles.container}>
     <View>
