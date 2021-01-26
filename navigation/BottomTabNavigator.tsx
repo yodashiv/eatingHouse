@@ -7,7 +7,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import DiscoveryScreen from '../screens/DiscoveryScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, HomeParamlist, DiscoveryParamList, CollaborateParamList } from '../types';
+import CollaborateScreen from '../screens/CollaborateScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -20,16 +21,23 @@ export default function BottomTabNavigator() {
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
         name="TabOne"
-        component={TabOneNavigator}
+        component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-home-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoNavigator}
+        component={DiscoveryNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-restaurant-outline" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="TabThree"
+        component={CollaborateNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-people-outline" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -44,9 +52,9 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeStack = createStackNavigator<TabOneParamList>();
+const HomeStack = createStackNavigator<HomeParamlist>();
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -58,16 +66,30 @@ function TabOneNavigator() {
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const DiscoveryStack = createStackNavigator<DiscoveryParamList>();
 
-function TabTwoNavigator() {
+function DiscoveryNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
+    <DiscoveryStack.Navigator>
+      <DiscoveryStack.Screen
         name="TabTwoScreen"
         component={DiscoveryScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
+        options={{ headerTitle: 'Discovery' }}
       />
-    </TabTwoStack.Navigator>
+    </DiscoveryStack.Navigator>
+  );
+}
+
+const CollaborateStack = createStackNavigator<CollaborateParamList>();
+
+function CollaborateNavigator() {
+  return (
+    <CollaborateStack.Navigator>
+      <CollaborateStack.Screen
+        name="TabThreeScreen"
+        component={CollaborateScreen}
+        options={{ headerTitle: 'Collaborate' }}
+      />
+    </CollaborateStack.Navigator>
   );
 }

@@ -6,12 +6,17 @@ export type RootStackParamList = {
 export type BottomTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;
+  TabThree: undefined;
 };
 
-export type TabOneParamList = {
+export type HomeParamlist = {
   TabOneScreen: undefined;
 };
 
-export type TabTwoParamList = {
+export type DiscoveryParamList = {
   TabTwoScreen: undefined;
+};
+
+export type CollaborateParamList = {
+  TabThreeScreen: undefined;
 };
