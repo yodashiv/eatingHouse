@@ -2,7 +2,7 @@ import React from 'react';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 const RestaurantSearch = () => {
-  const googlePlacesKey = process.env["REACT_NATIVE_googlePlacesKey"]
+  const googlePlacesKey = process.env.REACT_NATIVE_googlePlacesKey
   console.log("The key is " +  googlePlacesKey)
   return (
       <GooglePlacesAutocomplete
