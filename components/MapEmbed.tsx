@@ -99,7 +99,7 @@ export default function MapEmbed() {
                 </MapView>
             </View>
             <View style={styles.placeList}>
-                <PlaceList places={places} />
+                {/* <PlaceList places={places} /> */}
             </View>
       </View>
     );
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   placeList: {
-    flex: 1,
+    flex: 0,
     justifyContent: "center"
   }
 });
