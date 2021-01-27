@@ -26,11 +26,11 @@ let EmptyStar = key => (
     />
   );
 
-export interface reviewStarsInterface {
+interface reviewStarsPropsInterface {
     numStars: number
 }
 
-export default function ReviewStars(props: reviewStarsInterface) {
+export default function ReviewStars(props: reviewStarsPropsInterface) {
     const numStars = props.numStars;
     let starReviews = [];
     for (let i = 1; i <= 5; i++) {
