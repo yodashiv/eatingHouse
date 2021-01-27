@@ -12,12 +12,18 @@ import { GOOGLE_PLACES_KEY } from "@env";
 import ReviewStars from "./ReviewStars";
 
 
-interface placesItemInterface {
+interface markerInterface {
+  latitude: number, 
+  longitude: number
+}
+
+export interface placesItemInterface {
     id: String, 
     name: String, 
     rating: number, 
     vicinity: any, 
     photos?: Array<any>
+    marker: markerInterface
 };
 
 interface placeListPropsInterface {
