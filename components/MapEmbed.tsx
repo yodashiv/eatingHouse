@@ -79,11 +79,11 @@ export default function MapEmbed() {
                     flex: 1
                     }}
                     provider={PROVIDER_GOOGLE}
-                    initialRegion={{
-                    latitude: lat,
-                    longitude: long,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
+                    region={{
+                        latitude: lat,
+                        longitude: long,
+                        latitudeDelta: 0.004,
+                        longitudeDelta: 0.004
                     }}
                 >
                     {places.map((marker, i) => (
