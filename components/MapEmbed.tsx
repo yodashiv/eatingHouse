@@ -1,8 +1,10 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { View , StyleSheet} from "react-native";
 import { GOOGLE_PLACES_KEY } from "@env";
 import PlaceList, {placesItemInterface} from "./PlaceList";
+import { useSelector } from "react-redux";
+import { stateInterface } from "../reduxUtils/store";
 
 const dummyLat: number = 37.871666;
 const dummyLong: number = -122.272781;
@@ -31,13 +33,13 @@ function getPlacesUrl(lat, long, radius, type, apiKey) {
 
 function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.SetStateAction<any[]>>,  placeType: String = "restaurant") {
     const markers = [];
-    const url = this.getPlacesUrl(lat, long, 1500, placeType, GOOGLE_PLACES_KEY);
+    const url = getPlacesUrl(lat, long, 1500, placeType, GOOGLE_PLACES_KEY);
     fetch(url)
         .then(res => res.json())
         .then(res => {
         res.results.map((element, index) => {
             const markerObj: placesItemInterface = {
-                id: element.id, 
+                id: index, 
                 name: element.name, 
                 photos: element.photos, 
                 rating: element.rating, 
@@ -50,6 +52,7 @@ function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.Se
             markers.push(markerObj);
         });
         //update our places array
+        console.log(`Our first markers are: ${JSON.stringify(markers[0], null, 4)}`);
         setPlaces(markers);
     });
 }
@@ -60,6 +63,13 @@ export default function MapEmbed() {
     let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
     let lat = dummyLat;
     let long = dummyLong;
+
+    const location = useSelector((state: stateInterface) => state.location);
+
+    useEffect(() => {
+        console.log("The getPlaces has run!!!");
+        // getPlaces(lat, long, setPlaces, "restaurant");
+    }, [location]);
 
     return (
         <View style={styles.container}>

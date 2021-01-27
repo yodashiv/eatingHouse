@@ -40,7 +40,8 @@ export default function PlaceList(props: placeListPropsInterface) {
         <Content>
           {places.length <= 0 && (
             <View style={styles.loaderContainer}>
-              <ActivityIndicator size="large" />
+              <Text style={{alignSelf: "center"}}> There are no results near you. </Text>
+              {/* <ActivityIndicator size="large" /> */}
             </View>
           )}
 
