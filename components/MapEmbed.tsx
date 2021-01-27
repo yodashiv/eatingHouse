@@ -55,10 +55,11 @@ function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.Se
 }
 
 
-export default function Map() {
+export default function MapEmbed() {
 
     let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
-    let lat, long = dummyLat, dummyLong;
+    let lat = dummyLat;
+    let long = dummyLong;
 
     return (
         <View style={styles.container}>
