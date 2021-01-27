@@ -61,14 +61,14 @@ function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.Se
 export default function MapEmbed() {
 
     let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
-    let lat = dummyLat;
-    let long = dummyLong;
 
     const location = useSelector((state: stateInterface) => state.location);
+    let lat = useSelector((state: stateInterface) => state.latitude);
+    let long = useSelector((state: stateInterface) => state.longitude);
 
     useEffect(() => {
         console.log("The getPlaces has run!!!");
-        // getPlaces(lat, long, setPlaces, "restaurant");
+        getPlaces(lat, long, setPlaces, "restaurant");
     }, [location]);
 
     return (
