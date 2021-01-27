@@ -63,11 +63,11 @@ export default function MapEmbed() {
     let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
 
     const location = useSelector((state: stateInterface) => state.location);
-    let lat = useSelector((state: stateInterface) => state.latitude);
-    let long = useSelector((state: stateInterface) => state.longitude);
+    let lat: number = useSelector((state: stateInterface) => state.latitude);
+    let long: number = useSelector((state: stateInterface) => state.longitude);
 
     useEffect(() => {
-        console.log("The getPlaces has run!!!");
+        console.log("The getPlaces (nearby restaruants) has run!!!");
         getPlaces(lat, long, setPlaces, "restaurant");
     }, [location]);
 

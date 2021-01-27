@@ -21,16 +21,16 @@ const RestaurantSearch = () => {
       placeholder="Search"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        console.log("The location is" + location);
         console.log("Fetching forward geocoding info from locationIQ");
         let url = getForwardGeocodingUrl(data.description, LOCATIONIQ_KEY);
 
         fetch(url)
         .then(res => res.json())
         .then(res => {
-          res.length > 0 && dispatch(updateLocation({location: data.description, latitude: res[0].lat, longitude: res[0].lon}))
+           console.log(`The first forward geocoding result is ${JSON.stringify(res[0], null, 4)}`);
+           res.length > 0 && dispatch(updateLocation({location: data.description, latitude: +res[0].lat, longitude: +res[0].lon}))
         });
-        console.log(`The data is ${JSON.stringify(data, null, 4)}`);
+        console.log(`The google autocomplete data is ${JSON.stringify(data, null, 4)}`);
       }}
       query={{
         key: GOOGLE_PLACES_KEY,
