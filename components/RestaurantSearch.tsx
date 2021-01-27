@@ -13,7 +13,7 @@ const RestaurantSearch = () => {
 
   return (
       <GooglePlacesAutocomplete
-      placeholder={location}
+      placeholder="Search"
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
         console.log("The location is" + location);
