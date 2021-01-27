@@ -27,9 +27,9 @@ const RestaurantSearch = () => {
 
         fetch(url)
         .then(res => res.json())
-        .then(res => console.log(res));
-
-        dispatch(updateLocation({location: data.description}));
+        .then(res => {
+          res.length > 0 && dispatch(updateLocation({location: data.description, latitude: res[0].lat, longitude: res[0].lon}))
+        });
         console.log(`The data is ${JSON.stringify(data, null, 4)}`);
       }}
       query={{

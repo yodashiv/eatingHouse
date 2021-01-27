@@ -3,15 +3,21 @@ import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import {rootReducer} from "./reduxSetup";
 
 export interface stateInterface {
-    location: string
+    location: string,
+    latitude: number, 
+    longitude: number
 };
 
 let initialState: stateInterface = {
-    location: ""
+    location: "",
+    latitude: 0, 
+    longitude: 0
 };
 
 let testState: stateInterface = {
-    location: "Zion Canyon"
+    location: "Berkeley", 
+    latitude: 37.871666, 
+    longitude: -122.272781
 };
 
 const store = configureStore({
