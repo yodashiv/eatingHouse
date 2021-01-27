@@ -55,7 +55,7 @@ function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.Se
 }
 
 
-export default function MapScreen() {
+export default function Map() {
 
     let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
     let lat, long = dummyLat, dummyLong;
