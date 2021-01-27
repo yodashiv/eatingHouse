@@ -3,19 +3,22 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { GOOGLE_PLACES_KEY } from "@env";
 import {useDispatch, useSelector} from "react-redux";
 import {stateInterface} from "../reduxUtils/store";
+import {updateLocation} from "../reduxUtils/reduxSetup";
 
 
 const RestaurantSearch = () => {
 
+  let location = useSelector((state: stateInterface) => state.location)
   const dispatch = useDispatch();
 
   return (
       <GooglePlacesAutocomplete
-      placeholder='Search'
+      placeholder={location}
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-        console.log("I was pressed");
-        console.log(data, details);
+        console.log("The location is" + location);
+        dispatch(updateLocation({location: data.description}));
+        console.log(`The data description is ${data.description}`);
       }}
       query={{
         key: GOOGLE_PLACES_KEY,

@@ -4,19 +4,19 @@ import {rootReducer} from "./reduxSetup";
 
 export interface stateInterface {
     location: string
-}
+};
 
 let initialState: stateInterface = {
     location: ""
-}
+};
 
 let testState: stateInterface = {
     location: "Zion Canyon"
-}
+};
 
 const store = configureStore({
     reducer: rootReducer,
     preloadedState: testState
 });
 
-export default store
+export default store;
