@@ -5,6 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import RestaurantSearch from "../components/RestaurantSearch";
 import MapEmbed from '../components/MapEmbed';
+import SearchBarPopout from '../components/SearchBarPopout';
 
 export default function HomeScreen() {
 
@@ -14,6 +15,7 @@ export default function HomeScreen() {
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
       {/* <EditScreenInfo path="/screens/HomeScreen.tsx" /> */}
       {/* <RestaurantSearch/> */}
+      <SearchBarPopout/>
       <MapEmbed/>
     </View>
   );
