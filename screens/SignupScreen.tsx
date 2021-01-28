@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, GestureResponderEvent} from 'react-native';
 import EmailInput from '../components/EmailInput';
 import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
+import firebase from "firebase";
 
 export default function SignupScreen() {
 
@@ -13,6 +14,17 @@ export default function SignupScreen() {
         console.log("The sign up button was pressed");
         console.log(`The email was ${email} and the password was ${password}`);
         //FIXME: Add firebase sign up stuff here
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                //FIXME: notify user that signup succeeded 
+                console.log("Sign up succeeded and response is:");
+                console.log(result);
+            })
+            .catch((error) => {
+                //FIXME: notify user that signup failed 
+                console.log("Sign up failed and response is:");
+                console.log(error);
+            });
     };
 
     return (
