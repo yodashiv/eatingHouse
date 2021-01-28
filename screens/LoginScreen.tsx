@@ -5,6 +5,7 @@ import EmailInput from '../components/EmailInput';
 import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
 import { useNavigation } from '@react-navigation/native';
+import firebase from 'firebase';
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -16,6 +17,17 @@ export default function LoginScreen() {
     console.log("The login button was pressed");
     console.log(`The email was ${email} and the password was ${password}`);
     //FIXME: Add firebase auth stuff here
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((result) => {
+        //FIXME: notify user that signup succeeded 
+        console.log("Login succeeded and response is:");
+        console.log(result);
+    })
+    .catch((error) => {
+        //FIXME: notify user that signup failed 
+        console.log("Login failed and response is:");
+        console.log(error);
+    });
   };
 
   return (
