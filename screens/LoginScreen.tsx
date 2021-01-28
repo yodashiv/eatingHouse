@@ -22,6 +22,7 @@ export default function LoginScreen() {
         //FIXME: notify user that signup succeeded 
         console.log("Login succeeded and response is:");
         console.log(result);
+        navigation.navigate("Root");
     })
     .catch((error) => {
         //FIXME: notify user that signup failed 
