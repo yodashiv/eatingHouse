@@ -32,7 +32,7 @@ export default function LoginScreen() {
           <Button
             title="Need an account?"
             style={styles.signupButton}
-            type="outline"
+            type="clear"
             onPress={() => navigation.navigate("SignupScreen")}
             />
         </View>
