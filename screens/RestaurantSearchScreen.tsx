@@ -12,7 +12,7 @@ function getForwardGeocodingUrl(searchTerm: string, apiKey: string) {
   return `https://us1.locationiq.com/v1/search.php?key=${apiKey}&q=${searchTerm}&format=json`;
 }
 
-const RestaurantSearch = () => {
+const RestaurantSearchScreen = () => {
   let location = useSelector((state: stateInterface) => state.location)
   const dispatch = useDispatch();
   const navigation = useNavigation();
@@ -45,4 +45,4 @@ const RestaurantSearch = () => {
   );
 };
 
-export default RestaurantSearch;
+export default RestaurantSearchScreen;

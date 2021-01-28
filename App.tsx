@@ -22,11 +22,15 @@ const firebaseConfig = {
   measurementId: "G-7642Q7TJEB"
 };
 
+// if (firebase.apps.length == 0) {
+//   firebase.initializeApp(firebaseConfig);
+// }
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete || true) {
+  if (!isLoadingComplete) {
     return <Text> This is a test </Text>;
   } else {
   return (

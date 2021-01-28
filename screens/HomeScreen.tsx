@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import RestaurantSearch from "../components/RestaurantSearch";
+import RestaurantSearchScreen from "./RestaurantSearchScreen";
 import MapEmbed from '../components/MapEmbed';
 import SearchBarPopout from '../components/SearchBarPopout';
 
