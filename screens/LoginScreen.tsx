@@ -10,12 +10,12 @@ export default function LoginScreen() {
     <View style={styles.container}>
         <Image
           source={require("../assets/images/logo.png")}
-          style={{flex: 1}}
+          style= {{flex:1 , width: undefined, height: undefined}}
         />
         <View style={{flex: 1}}>
-        <EmailInput/>
-        <PasswordInput/>
-        <LoginButton/>
+          <EmailInput/>
+          <PasswordInput/>
+          <LoginButton/>
         </View>
     </View>
   );
