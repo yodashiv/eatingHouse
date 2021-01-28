@@ -13,13 +13,13 @@ import {FIREBASE_KEY} from "@env";
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
-  apiKey: FIREBASE_KEY,
-  authDomain: "eatinghouse.firebaseapp.com",
-  projectId: "eatinghouse",
-  storageBucket: "eatinghouse.appspot.com",
-  messagingSenderId: "351334492855",
-  appId: "1:351334492855:web:39231106c1abbeba0b7b32",
-  measurementId: "G-7642Q7TJEB"
+  apiKey: "AIzaSyB2Ouigwy3CHgGtGrq8WygGpDkZFx7TlzE",
+  authDomain: "neweatinghousefirebase.firebaseapp.com",
+  projectId: "neweatinghousefirebase",
+  storageBucket: "neweatinghousefirebase.appspot.com",
+  messagingSenderId: "1099284106240",
+  appId: "1:1099284106240:web:ece311422e43822e0f5ce5",
+  measurementId: "G-WBYR7G3RRH"
 };
 
 if (firebase.apps.length == 0) {

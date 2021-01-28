@@ -12,7 +12,7 @@ export default function LoginScreen() {
           source={require("../assets/images/logo.png")}
           style= {styles.logoImage}
         />
-        <View style={styles.separator}/>
+        {/* <View style={styles.separator}/> */}
         <View style={styles.inputForm}>
           <EmailInput/>
           <PasswordInput/>
