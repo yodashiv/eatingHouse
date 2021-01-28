@@ -10,9 +10,10 @@ export default function LoginScreen() {
     <View style={styles.container}>
         <Image
           source={require("../assets/images/logo.png")}
-          style= {{flex:1 , width: undefined, height: undefined}}
+          style= {styles.logoImage}
         />
-        <View style={{flex: 1}}>
+        <View style={styles.separator}/>
+        <View style={styles.inputForm}>
           <EmailInput/>
           <PasswordInput/>
           <LoginButton/>
@@ -26,6 +27,16 @@ const styles = StyleSheet.create({
       flex: 1,
       // alignItems: 'center',
       justifyContent: 'center',
+    },
+    logoImage: {
+      flex:1 , 
+      width: undefined, 
+      height: undefined
+    },
+    inputForm: {
+      flex: 1, 
+      alignItems: "center", 
+      justifyContent:"center"
     },
     title: {
       fontSize: 20,

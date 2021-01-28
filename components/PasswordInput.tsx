@@ -4,7 +4,7 @@ import { Input } from 'react-native-elements';
 export default function PasswordInput() {
     return (
         <Input
-        placeholder='Email'
+        placeholder='Password'
         leftIcon={{ type: 'feather', name: 'lock' }}
         />
       );
