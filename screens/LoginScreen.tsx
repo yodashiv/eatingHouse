@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Image, GestureResponderEvent} from 'react-native';
 import { Button, Divider } from 'react-native-elements';
 import EmailInput from '../components/EmailInput';
@@ -6,13 +6,17 @@ import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
 import { useNavigation } from '@react-navigation/native';
 
-const handlePress = (event: GestureResponderEvent) => {
-  console.log("The login button was pressed");
-  //FIXME: Add firebase auth stuff here
-};
-
 export default function LoginScreen() {
   const navigation = useNavigation();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handlePress = (event: GestureResponderEvent) => {
+    console.log("The login button was pressed");
+    console.log(`The email was ${email} and the password was ${password}`);
+    //FIXME: Add firebase auth stuff here
+  };
 
   return (
     <View style={styles.container}>
@@ -22,8 +26,8 @@ export default function LoginScreen() {
         />
         {/* <View style={styles.separator}/> */}
         <View style={styles.inputForm}>
-          <EmailInput/>
-          <PasswordInput/>
+          <EmailInput setEmail={setEmail}/>
+          <PasswordInput setPassword={setPassword}/>
           <AuthButton
             title="Login"
             onPress={handlePress}
