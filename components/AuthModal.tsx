@@ -11,6 +11,7 @@ import {
 interface AuthModalPropsInterface {
     modalVisible: boolean, 
     setModalVisible: React.Dispatch<React.SetStateAction<boolean>>,
+    message: string
 };
 
 export default function AuthModal(props: AuthModalPropsInterface) {
@@ -25,14 +26,14 @@ export default function AuthModal(props: AuthModalPropsInterface) {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
+              <Text style={styles.modalText}>{props.message}</Text>
               <TouchableHighlight
                 style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
                 onPress={() => {
                   props.setModalVisible(false);
                 }}
               >
-                <Text style={styles.textStyle}>Hide Modal</Text>
+                <Text style={styles.textStyle}>Dismiss</Text>
               </TouchableHighlight>
             </View>
           </View>

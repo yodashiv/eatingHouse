@@ -13,6 +13,7 @@ export default function SignupScreen() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
 
     const handlePress = (event: GestureResponderEvent) => {
         console.log("The sign up button was pressed");
@@ -29,6 +30,7 @@ export default function SignupScreen() {
                 //FIXME: notify user that signup failed 
                 console.log("Sign up failed and response is:");
                 console.log(error);
+                setModalMessage(error.message)
                 setModalVisible(true);
             });
     };
@@ -38,6 +40,7 @@ export default function SignupScreen() {
             <AuthModal
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
+              message={modalMessage}
             />
             <Image
             source={require("../assets/images/logo.png")}
