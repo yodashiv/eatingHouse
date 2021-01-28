@@ -11,6 +11,7 @@ export type BottomTabParamList = {
 
 export type HomeParamlist = {
   TabOneScreen: undefined;
+  FullSearchScreen: undefined;
 };
 
 export type DiscoveryParamList = {

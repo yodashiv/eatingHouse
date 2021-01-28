@@ -9,6 +9,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DiscoveryScreen from '../screens/DiscoveryScreen';
 import { BottomTabParamList, HomeParamlist, DiscoveryParamList, CollaborateParamList } from '../types';
 import CollaborateScreen from '../screens/CollaborateScreen';
+import RestaurantSearch from '../components/RestaurantSearch';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -61,6 +62,11 @@ function HomeNavigator() {
         name="TabOneScreen"
         component={HomeScreen}
         options={{ headerTitle: 'Home' }}
+      />
+      <HomeStack.Screen
+        name="FullSearchScreen"
+        component={RestaurantSearch}
+        options={{ headerTitle: 'Search' }}
       />
     </HomeStack.Navigator>
   );

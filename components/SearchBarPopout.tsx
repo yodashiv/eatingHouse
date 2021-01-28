@@ -12,7 +12,7 @@ export default function SearchBarPopout() {
         ref={self}
         onFocus={() => {
             console.log("The search bar was pressed");
-            navigation.navigate("TabTwo");
+            navigation.navigate("FullSearchScreen");
             self.current.blur();
         }}
       />
