@@ -22,9 +22,9 @@ const firebaseConfig = {
   measurementId: "G-7642Q7TJEB"
 };
 
-// if (firebase.apps.length == 0) {
-//   firebase.initializeApp(firebaseConfig);
-// }
+if (firebase.apps.length == 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
