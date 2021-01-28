@@ -2,17 +2,17 @@ import React from 'react';
 import { GestureResponderEvent, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 
-const handlePress = (event: GestureResponderEvent) => {
-    console.log("The login button was pressed");
-    //FIXME: Add firebase auth stuff here
-};
+export interface AuthButtonPropsInterface {
+  title: string, 
+  onPress: (event: GestureResponderEvent) => void
+}
 
-export default function LoginButton() {
+export default function AuthButton(props: AuthButtonPropsInterface) {
     return (
         <Button
-        title="Login"
+        title={props.title}
         type="outline"
-        onPress={handlePress}
+        onPress={props.onPress}
         />
       );
 }

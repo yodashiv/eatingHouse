@@ -5,11 +5,11 @@ import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
 
 const handlePress = (event: GestureResponderEvent) => {
-  console.log("The login button was pressed");
-  //FIXME: Add firebase auth stuff here
-};
+    console.log("The sign up button was pressed");
+    //FIXME: Add firebase sign up stuff here
+  };
 
-export default function LoginScreen() {
+export default function SignupScreen() {
   return (
     <View style={styles.container}>
         <Image
@@ -21,7 +21,7 @@ export default function LoginScreen() {
           <EmailInput/>
           <PasswordInput/>
           <AuthButton
-            title="Login"
+            title="Signup"
             onPress={handlePress}
           />
         </View>

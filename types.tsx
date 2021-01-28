@@ -4,6 +4,11 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
+export type LoginStackParamList = {
+  LoginScreen: undefined;
+  SignupScreen: undefined;
+}
+
 export type BottomTabParamList = {
   Home: undefined;
   Discovery: undefined;
