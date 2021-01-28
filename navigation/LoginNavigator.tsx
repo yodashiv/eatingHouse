@@ -2,21 +2,22 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LoginStackParamList } from '../types';
 import LoginScreen from '../screens/LoginScreen';
+import SignupScreen from '../screens/SignupScreen';
 
 const LoginStack = createStackNavigator<LoginStackParamList>();
 
-function LoginNavigator() {
+export default function LoginNavigator() {
   return (
     <LoginStack.Navigator>
       <LoginStack.Screen
         name="LoginScreen"
         component={LoginScreen}
-        options={{ headerTitle: 'Home' }}
+        options={{ headerTitle: 'Login' }}
       />
       <LoginStack.Screen
         name="SignupScreen"
-        component={RestaurantSearchScreen}
-        options={{ headerTitle: 'Search' }}
+        component={SignupScreen}
+        options={{ headerTitle: 'Signup' }}
       />
     </LoginStack.Navigator>
   );
