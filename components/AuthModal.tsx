@@ -20,9 +20,6 @@ export default function AuthModal(props: AuthModalPropsInterface) {
           animationType="slide"
           transparent={true}
           visible={props.modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
