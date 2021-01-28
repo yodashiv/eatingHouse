@@ -7,6 +7,7 @@ export type RootStackParamList = {
 export type LoginStackParamList = {
   LoginScreen: undefined;
   SignupScreen: undefined;
+  ResetPasswordScreen: undefined;
 }
 
 export type BottomTabParamList = {
