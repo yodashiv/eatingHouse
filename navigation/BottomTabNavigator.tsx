@@ -18,24 +18,24 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={HomeNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-home-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Discovery"
         component={DiscoveryNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-restaurant-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabThree"
+        name="Collaborate"
         component={CollaborateNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-people-outline" color={color} />,
@@ -59,7 +59,7 @@ function HomeNavigator() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="TabOneScreen"
+        name="HomeMapScreen"
         component={HomeScreen}
         options={{ headerTitle: 'Home' }}
       />
