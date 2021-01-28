@@ -33,6 +33,7 @@ const RestaurantSearch = () => {
             dispatch(updateLocation({location: data.description, latitude: +res[0].lat, longitude: +res[0].lon}))
            }
 
+           navigation.navigate("HomeMapScreen");
         });
         console.log(`The google autocomplete data is ${JSON.stringify(data, null, 4)}`);
       }}
