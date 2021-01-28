@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -30,16 +30,52 @@ export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete) {
-    return <Text> This is a test </Text>;
-  } else {
-  return (
-    <Provider store={store}>
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    </Provider>
+  const [loaded, setLoaded] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        setLoggedIn(false);
+        setLoaded(true);
+      } else {
+        setLoggedIn(true);
+        setLoaded(true);
+      }
+    });
+  }, []);
+
+  //FIXME: put a better loading screen here
+  // Firebase is not yet sure of the state of authentication
+  if (!loaded) {
+    return (
+      <View>
+        <Text>Loading</Text>
+      </View>
     );
+  } else {
+      return (
+        <Provider store={store}>
+          <SafeAreaProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+          </SafeAreaProvider>
+        </Provider>
+        );
   }
+
+
+
+  // if (!isLoadingComplete) {
+  //   return <Text> This is a test </Text>;
+  // } else {
+  // return (
+  //   <Provider store={store}>
+  //     <SafeAreaProvider>
+  //       <Navigation colorScheme={colorScheme} />
+  //       <StatusBar />
+  //     </SafeAreaProvider>
+  //   </Provider>
+  //   );
+  // }
 }
