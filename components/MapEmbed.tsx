@@ -33,7 +33,8 @@ function getPlacesUrl(lat, long, radius, type, apiKey) {
 
 function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.SetStateAction<any[]>>,  placeType: String = "restaurant") {
     const markers = [];
-    const url = getPlacesUrl(lat, long, 1500, placeType, GOOGLE_PLACES_KEY);
+    const url = getPlacesUrl(lat, long, 3000, placeType, GOOGLE_PLACES_KEY);
+    console.log(`The url for getplaces is ${url}`);
     fetch(url)
         .then(res => res.json())
         .then(res => {
