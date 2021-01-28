@@ -3,9 +3,11 @@ import { StyleSheet, View, Image, GestureResponderEvent} from 'react-native';
 import EmailInput from '../components/EmailInput';
 import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
+import { useNavigation } from '@react-navigation/native';
 import firebase from "firebase";
 
 export default function SignupScreen() {
+    const navigation = useNavigation();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,6 +21,7 @@ export default function SignupScreen() {
                 //FIXME: notify user that signup succeeded 
                 console.log("Sign up succeeded and response is:");
                 console.log(result);
+                navigation.navigate("Root");
             })
             .catch((error) => {
                 //FIXME: notify user that signup failed 
