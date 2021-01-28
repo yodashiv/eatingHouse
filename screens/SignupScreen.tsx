@@ -5,12 +5,14 @@ import AuthButton from '../components/AuthButton';
 import PasswordInput from '../components/PasswordInput';
 import { useNavigation } from '@react-navigation/native';
 import firebase from "firebase";
+import AuthModal from '../components/AuthModal';
 
 export default function SignupScreen() {
     const navigation = useNavigation();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [modalVisible, setModalVisible] = useState(false);
 
     const handlePress = (event: GestureResponderEvent) => {
         console.log("The sign up button was pressed");
@@ -27,11 +29,16 @@ export default function SignupScreen() {
                 //FIXME: notify user that signup failed 
                 console.log("Sign up failed and response is:");
                 console.log(error);
+                setModalVisible(true);
             });
     };
 
     return (
         <View style={styles.container}>
+            <AuthModal
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
+            />
             <Image
             source={require("../assets/images/logo.png")}
             style= {styles.logoImage}
