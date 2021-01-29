@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { View , StyleSheet} from "react-native";
-import { GOOGLE_PLACES_KEY } from "@env";
+import { YELP_KEY } from "@env";
 import PlaceList, {placesItemInterface} from "./PlaceList";
 import { useSelector } from "react-redux";
 import { stateInterface } from "../reduxUtils/store";
@@ -23,39 +23,80 @@ const dummyLong: number = -122.272781;
 
 
 // Construct the Place URL
-function getPlacesUrl(lat, long, radius, type, apiKey) {
-    const baseUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
-    const location = `location=${lat},${long}&radius=${radius}`;
-    const typeData = `&types=${type}`;
-    const api = `&key=${apiKey}`;
-    return `${baseUrl}${location}${typeData}${api}`;
+// function getPlacesUrl(lat, long, radius, type, apiKey) {
+//     const baseUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`;
+//     const location = `location=${lat},${long}&radius=${radius}`;
+//     const typeData = `&types=${type}`;
+//     const api = `&key=${apiKey}`;
+//     return `${baseUrl}${location}${typeData}${api}`;
+// }
+
+// Use Yelp API to get nearby restaurants relative to typed in location 
+function getPlacesUrl(location, type) {
+    const baseUrl = `https://api.yelp.com/v3/businesses/search?`;
+    return `${baseUrl}term=${type}&location=${location}`;
 }
 
-function getPlaces(lat: number, long: number, setPlaces: React.Dispatch<React.SetStateAction<any[]>>,  placeType: String = "restaurant") {
+function getPlaces(location: string, setPlaces: React.Dispatch<React.SetStateAction<any[]>>,  placeType: String = "restaurant") {
     const markers = [];
-    const url = getPlacesUrl(lat, long, 3000, placeType, GOOGLE_PLACES_KEY);
+    const url = getPlacesUrl(location, placeType);
     console.log(`The url for getplaces is ${url}`);
-    fetch(url)
-        .then(res => res.json())
-        .then(res => {
-        res.results.map((element, index) => {
-            const markerObj: placesItemInterface = {
-                id: index, 
-                name: element.name, 
-                photos: element.photos, 
-                rating: element.rating, 
-                vicinity: element.vicinity, 
-                marker: { 
-                    latitude: element.geometry.location.lat, 
-                    longitude: element.geometry.location.lng
-                }
-            };
-            markers.push(markerObj);
-        });
-        //update our places array
-        console.log(`Our first markers are: ${JSON.stringify(markers[0], null, 4)}`);
-        setPlaces(markers);
-    });
+
+    fetch(url, { 
+        method: 'GET', 
+        headers: new Headers({
+          'Authorization': `Bearer ${YELP_KEY}`, 
+          'Content-Type': 'application/json'
+        })
+      })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        res.businesses.map((element, index) => {
+          const markerObj: placesItemInterface = {
+              id: index, 
+              name: element.name, 
+              photo_url: element.image_url, 
+              rating: element.rating, 
+              vicinity: element.vicinity || "FIXME: replace this later", 
+              marker: { 
+                  latitude: element.coordinates.latitude, 
+                  longitude: element.coordinates.longitude
+              }
+          };
+          markers.push(markerObj);
+      });
+      //update our places array
+      console.log(`Our first markers are: ${JSON.stringify(markers[0], null, 4)}`);
+      setPlaces(markers);
+      })
+      .catch((error) => {
+          console.log(error);
+      });
+
+
+
+    // fetch(url)
+    //     .then(res => res.json())
+    //     .then(res => {
+    //     res.results.map((element, index) => {
+    //         const markerObj: placesItemInterface = {
+    //             id: index, 
+    //             name: element.name, 
+    //             photos: element.photos, 
+    //             rating: element.rating, 
+    //             vicinity: element.vicinity, 
+    //             marker: { 
+    //                 latitude: element.geometry.location.lat, 
+    //                 longitude: element.geometry.location.lng
+    //             }
+    //         };
+    //         markers.push(markerObj);
+    //     });
+    //     //update our places array
+    //     console.log(`Our first markers are: ${JSON.stringify(markers[0], null, 4)}`);
+    //     setPlaces(markers);
+    // });
 }
 
 
@@ -69,7 +110,7 @@ export default function MapEmbed() {
 
     useEffect(() => {
         console.log("The getPlaces (nearby restaruants) has run!!!");
-        getPlaces(lat, long, setPlaces, "restaurant");
+        getPlaces(location, setPlaces, "restaurant");
     }, [location]);
 
     return (

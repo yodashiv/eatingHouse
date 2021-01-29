@@ -22,7 +22,7 @@ export interface placesItemInterface {
     name: String, 
     rating: number, 
     vicinity: any, 
-    photos?: Array<any>
+    photo_url?: string,
     marker: markerInterface
 };
 
@@ -74,11 +74,8 @@ export default function PlaceList(props: placeListPropsInterface) {
                     leftAvatar={{
                       rounded: false,
                       size: "large",
-                      source: item.photos && {
-                        uri:
-                          item.photos.length > 0
-                            ? `https://maps.googleapis.com/maps/api/place/photo?photoreference=${item.photos[0].photo_reference}&sensor=false&maxheight=${item.photos[0].height}&maxwidth=${item.photos[0].width}&key=${GOOGLE_PLACES_KEY}`
-                            : baseImage
+                      source: {
+                        uri: item.photo_url ? item.photo_url : baseImage,
                       }
                     }}
                     bottomDivider
