@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { ListItem, Text } from "react-native-elements";
 import { Container, Content } from "native-base";
-import { GOOGLE_PLACES_KEY } from "@env";
 import ReviewStars from "./ReviewStars";
 
 
