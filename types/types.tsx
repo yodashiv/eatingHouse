@@ -28,3 +28,19 @@ export type DiscoveryParamList = {
 export type CollaborateParamList = {
   TabThreeScreen: undefined;
 };
+
+export interface placesItemInterface {
+  id: String, 
+  name: String, 
+  rating: number, 
+  vicinity: any, 
+  photo_url?: string,
+  marker: markerInterface
+};
+
+export interface markerInterface {
+  latitude: number, 
+  longitude: number
+}
+
+

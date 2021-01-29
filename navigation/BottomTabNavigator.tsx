@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import HomeScreen from '../screens/HomeScreen';
 import DiscoveryScreen from '../screens/DiscoveryScreen';
-import { BottomTabParamList, HomeParamlist, DiscoveryParamList, CollaborateParamList } from '../types';
+import { BottomTabParamList, HomeParamlist, DiscoveryParamList, CollaborateParamList } from '../types/types';
 import CollaborateScreen from '../screens/CollaborateScreen';
 import RestaurantSearchScreen from '../screens/RestaurantSearchScreen';
 

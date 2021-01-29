@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import React from "react";
+import { placesItemInterface } from "../types/types";
 import { stateInterface } from "./store";
 
 interface updateLocationActionInterface {
@@ -21,12 +22,28 @@ const updateLocationF = (state: stateInterface, action: updateLocationActionInte
     }
 );
 
+interface updateNearbyLocationInfoActionInterface {
+    payload: updateNearbyLocationInfoPayloadInterface
+}
+
+interface updateNearbyLocationInfoPayloadInterface {
+    nearbyLocationInfo: Array<placesItemInterface>
+}
+
+const updateNearbyLocationInfoF = (state: stateInterface, action: updateNearbyLocationInfoActionInterface) => (
+    {
+        ...state,
+        nearbyLocationInfo: action.payload.nearbyLocationInfo
+    }
+);
+
 /* Redux Toolkit utility method to auto-create action types, creators, and reducer. */
 const dataSlice = createSlice({
     name: 'data',
     initialState: {},
     reducers: {
-        "updateLocation": updateLocationF
+        "updateLocation": updateLocationF, 
+        "updateNearbyLocationInfo": updateNearbyLocationInfoF
     }
 });
 
@@ -43,4 +60,4 @@ export const templateAsyncFunc = () => {
 
 const {actions, reducer } = dataSlice;
 export const rootReducer = reducer;
-export const {updateLocation } = actions;
+export const {updateLocation, updateNearbyLocationInfo } = actions;

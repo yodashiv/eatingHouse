@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginStackParamList } from '../types';
+import { LoginStackParamList } from '../types/types';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';

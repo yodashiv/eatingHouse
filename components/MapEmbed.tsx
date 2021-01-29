@@ -1,10 +1,12 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, Dispatch } from "react";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import { View , StyleSheet} from "react-native";
 import { YELP_KEY } from "@env";
-import PlaceList, {placesItemInterface} from "./PlaceList";
-import { useSelector } from "react-redux";
+import PlaceList from "./PlaceList";
+import { useDispatch, useSelector } from "react-redux";
 import { stateInterface } from "../reduxUtils/store";
+import { placesItemInterface } from "../types/types";
+import {updateNearbyLocationInfo} from "../reduxUtils/reduxSetup";
 
 const dummyLat: number = 37.871666;
 const dummyLong: number = -122.272781;
@@ -37,7 +39,7 @@ function getPlacesUrl(location, type) {
     return `${baseUrl}term=${type}&location=${location}`;
 }
 
-function getPlaces(location: string, setPlaces: React.Dispatch<React.SetStateAction<any[]>>,  placeType: String = "restaurant") {
+function getPlaces(location: string, dispatch: Dispatch<any>,  placeType: String = "restaurant") {
     const markers = [];
     const url = getPlacesUrl(location, placeType);
     console.log(`The url for getplaces is ${url}`);
@@ -68,7 +70,7 @@ function getPlaces(location: string, setPlaces: React.Dispatch<React.SetStateAct
       });
       //update our places array
       console.log(`Our first markers are: ${JSON.stringify(markers[0], null, 4)}`);
-      setPlaces(markers);
+      dispatch(updateNearbyLocationInfo({nearbyLocationInfo: markers}));
       })
       .catch((error) => {
           console.log(error);
@@ -101,16 +103,16 @@ function getPlaces(location: string, setPlaces: React.Dispatch<React.SetStateAct
 
 
 export default function MapEmbed() {
-
-    let [places, setPlaces] = useState<Array<placesItemInterface> | undefined>([]);
+    const dispatch = useDispatch();
 
     const location = useSelector((state: stateInterface) => state.location);
     let lat: number = useSelector((state: stateInterface) => state.latitude);
     let long: number = useSelector((state: stateInterface) => state.longitude);
+    let places = useSelector((state: stateInterface) => state.nearbyLocationInfo);
 
     useEffect(() => {
         console.log("The getPlaces (nearby restaruants) has run!!!");
-        getPlaces(location, setPlaces, "restaurant");
+        getPlaces(location, dispatch, "restaurant");
     }, [location]);
 
     return (

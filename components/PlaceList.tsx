@@ -9,21 +9,7 @@ import {
 import { ListItem, Text } from "react-native-elements";
 import { Container, Content } from "native-base";
 import ReviewStars from "./ReviewStars";
-
-
-interface markerInterface {
-  latitude: number, 
-  longitude: number
-}
-
-export interface placesItemInterface {
-    id: String, 
-    name: String, 
-    rating: number, 
-    vicinity: any, 
-    photo_url?: string,
-    marker: markerInterface
-};
+import {placesItemInterface, markerInterface} from "../types/types"
 
 interface placeListPropsInterface {
     places: Array<placesItemInterface>
